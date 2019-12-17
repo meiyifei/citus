@@ -210,7 +210,9 @@ FindShardIntervalIndex(Datum searchedValue, DistTableCacheEntry *cacheEntry)
 /*       
 思想:
 	1、根据输入参数及其类型，得到hash值
-		searchedValue = FunctionCall1Coll(cacheEntry->hashFunction,cacheEntry->partitionColumn-			>varcollid, partitionColumnValue);                                                          2、根据分布表的分片数量，得到每个分片区间大小
+		searchedValue = FunctionCall1Coll(cacheEntry->hashFunction,cacheEntry->partitionColumn-			>varcollid, partitionColumnValue);                                                         
+			
+	2、根据分布表的分片数量，得到每个分片区间大小
 		uint64 hashTokenIncrement = HASH_TOKEN_COUNT/shardCount;
 		
 		根据master_metadata_utility.h可知HASH_TOKEN_COUNT=2^32
